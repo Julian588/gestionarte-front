@@ -1,7 +1,7 @@
-import useScrollToTop from "./Hooks/useScrollToTop";
-import { Field, Button } from "./Components";
+import useScrollToTop from "../Hooks/useScrollToTop";
+import { Field, Button } from "../components/Components";
 import { useId } from "react";
-import useFormFields from "./Hooks/useFormFields";
+import useFormFields from "../Hooks/useFormFields";
 
 function Login() {
   useScrollToTop();

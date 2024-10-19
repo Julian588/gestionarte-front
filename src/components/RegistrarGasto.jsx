@@ -1,6 +1,6 @@
 import { useId } from "react";
 import { Button, Field } from "./Components";
-import useFormFields from "./Hooks/useFormFields";
+import useFormFields from "../Hooks/useFormFields";
 
 function RegistrarGasto() {
   const gastoNombreId = useId();

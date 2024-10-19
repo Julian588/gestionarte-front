@@ -1,10 +1,10 @@
 import Header from "./components/Header";
-import Home from "./components/Home";
+import Home from "./Pages/Home";
 import Footer from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Dashboard from "./Pages/Dashboard";
 import RegistrarGasto from "./components/RegistrarGasto";
 import RegistrarCategoria from "./components/RegistrarCategoria";
 import RegistrarMetodoPago from "./components/RegistrarMetodoPago";

@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { Button } from "./Components";
+import { Button } from "../components/Components";
 import { useEffect, useRef } from "react";
 
 function Dashboard() {

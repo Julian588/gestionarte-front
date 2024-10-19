@@ -1,4 +1,4 @@
-import { Figure } from "./Components";
+import { Figure } from "../components/Components";
 import Img1 from "../../public/assets/figure1.jpg";
 import Img2 from "../../public/assets/figure2.png";
 import Img3 from "../../public/assets/figure3.jpg";

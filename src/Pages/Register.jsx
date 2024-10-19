@@ -1,6 +1,6 @@
-import { Field, Button } from "./Components";
+import { Field, Button } from "../components/Components";
 import { useId } from "react";
-import useFormFields from "./Hooks/useFormFields";
+import useFormFields from "../Hooks/useFormFields";
 
 function Register() {
   const fullNameId = useId();
