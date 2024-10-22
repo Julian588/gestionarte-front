@@ -9,10 +9,11 @@ import RegistrarGasto from "./components/RegistrarGasto";
 import RegistrarCategoria from "./components/RegistrarCategoria";
 import RegistrarMetodoPago from "./components/RegistrarMetodoPago";
 import ConsultarMovimientos from "./components/ConsultarMovimientos";
+import LoginProvider from "./Context/loginContext";
 
 function App() {
   return (
-    <>
+    <LoginProvider>
       <Header></Header>
       <main className="flex flex-col w-screen ">
         <Routes>
@@ -28,7 +29,7 @@ function App() {
         </Routes>
       </main>
       <Footer></Footer>
-    </>
+    </LoginProvider>
   );
 }
 

@@ -2,6 +2,7 @@ import useScrollToTop from "../Hooks/useScrollToTop";
 import { Field, Button } from "../components/Components";
 import { useId } from "react";
 import useFormFields from "../Hooks/useFormFields";
+import useLogin from "../Hooks/useLogin";
 
 function Login() {
   useScrollToTop();
@@ -13,6 +14,17 @@ function Login() {
     password: "",
   });
 
+  const { login } = useLogin();
+
+  const loginUser = (e) => {
+    e.preventDefault();
+    if (!fields.email && !fields.password) {
+      alert("Por favor llenar todos los campos.");
+    }
+
+    login(fields);
+  };
+
   console.log(fields);
 
   return (
@@ -23,7 +35,10 @@ function Login() {
           Inicia Sesión para empezar a gestionar tus gastos.
         </h2>
       </div>
-      <form className="relative px-52 xl:px-32 md:px-4 w-1/2 md:w-[380px] h-3/5 shadow-2xl rounded-md flex flex-col justify-center items-center gap-10">
+      <form
+        className="relative px-52 xl:px-32 md:px-4 w-1/2 md:w-[380px] h-3/5 shadow-2xl rounded-md flex flex-col justify-center items-center gap-10"
+        onSubmit={loginUser}
+      >
         <Field
           name={"Correo Electrónico: "}
           id={emailId}

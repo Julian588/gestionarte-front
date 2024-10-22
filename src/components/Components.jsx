@@ -51,7 +51,6 @@ export const Field = ({ name, id, type, value, onChange }) => {
         id={id}
         value={value}
         onChange={onChange}
-        required
       />
     </div>
   );

@@ -33,3 +33,7 @@ body {
 input[type="number"]::-webkit-inner-spin-button {
   display: none;
 }
+
+.no-fill{
+  background-color: rgba(253, 60, 60, 0.342);
+}
