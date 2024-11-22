@@ -20,7 +20,7 @@ function LoginProvider({ children }) {
     };
     fetchUsers();
     console.log("hola");
-  }, [locationñ]);
+  }, [location]);
 
   const login = async (loginData) => {
     const matchUser = users.find(
