@@ -4,7 +4,7 @@ import { LoginContext } from "../Context/loginContext";
 function useLogin() {
   const context = useContext(LoginContext);
   if (context === undefined) {
-    throw new Error("UseProducts must be within a ProductsProvider");
+    throw new Error("UseLogin must be within a LoginProvider");
   }
   return context;
 }

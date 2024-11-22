@@ -7,11 +7,11 @@ function useFormFields(initialState) {
     const value = e.target.value;
     setFields({
       ...fields,
-      [name]: value,
+      [name]: value
     });
   };
 
-  return [fields, handleFieldChange];
+  return [fields, setFields, handleFieldChange];
 }
 
 export default useFormFields;

@@ -1,15 +1,17 @@
-import useScrollToTop from "../Hooks/useScrollToTop";
-import { Field, Button } from "../components/Components";
+import useScrollToTop from "../../Hooks/useScrollToTop";
+import { Field, Button } from "../common/Components";
 import { useId } from "react";
-import useFormFields from "../Hooks/useFormFields";
-import useLogin from "../Hooks/useLogin";
+import useFormFields from "../../Hooks/useFormFields";
+import useLogin from "../../Hooks/useLogin";
+import { toast } from "sonner";
+import toastStyle from "../../utils/toastStyle";
 
 function Login() {
   useScrollToTop();
   const emailId = useId();
   const passwordId = useId();
 
-  const [fields, handleFieldChange] = useFormFields({
+  const [fields, setFields, handleFieldChange] = useFormFields({
     email: "",
     password: "",
   });
@@ -19,7 +21,13 @@ function Login() {
   const loginUser = (e) => {
     e.preventDefault();
     if (!fields.email && !fields.password) {
-      alert("Por favor llenar todos los campos.");
+      toast.error("Error", {
+        description: "Por favor llenar todos los campos",
+        richColors: true,
+        position: "bottom-center",
+        style: toastStyle,
+      });
+      return;
     }
 
     login(fields);
@@ -31,7 +39,7 @@ function Login() {
     <section className="h-screen w-screen flex justify-evenly items-center flex-col pt-[152px]">
       <div className="w-full flex justify-center items-center flex-col gap-3 ">
         <h1 className="text-6xl font-semibold text-shadow-md">Bienvenido.</h1>
-        <h2 className="text-2xl text-shadow md:text-lg">
+        <h2 className="text-2xl text-shadow md:text-lg md:px-3">
           Inicia Sesión para empezar a gestionar tus gastos.
         </h2>
       </div>
@@ -44,14 +52,14 @@ function Login() {
           id={emailId}
           type={"email"}
           value={fields.email}
-          onChange={(e) => handleFieldChange(e, "email")}
+          onChange={(e) => setFields({ ...fields, email: e.target.value })}
         />
         <Field
           name={"Contraseña: "}
           id={passwordId}
           type={"password"}
           value={fields.password}
-          onChange={(e) => handleFieldChange(e, "password")}
+          onChange={(e) => setFields({ ...fields, password: e.target.value })}
         />
         <div className="flex w-3/4 items-center justify-center gap-5 md:w-full md:flex-col mt-10">
           <Button>Iniciar Sesión</Button>

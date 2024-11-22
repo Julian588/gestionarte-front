@@ -1,4 +1,4 @@
-import { Name } from "./Components";
+import { Name } from "../common/Components";
 
 function Footer() {
   return (

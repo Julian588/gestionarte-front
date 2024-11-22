@@ -26,6 +26,10 @@ export default {
         lg: "4px 4px 8px rgba(0, 0, 0, 0.7)",
         none: "none",
       },
+      colors: {
+        primary: "#dddddd",
+        secondary: "#010002",
+      },
     },
     screens: {
       "2xl": { max: "1535px" },

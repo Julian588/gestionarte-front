@@ -1,6 +1,6 @@
 import { useId } from "react";
-import { Button, Field } from "./Components";
-import useFormFields from "../Hooks/useFormFields";
+import { Button, Field } from "../common/Components";
+import useFormFields from "../../Hooks/useFormFields";
 
 function RegistrarMetodoPago() {
   const metodoPagoId = useId();

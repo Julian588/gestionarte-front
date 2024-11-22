@@ -1,51 +1,66 @@
-import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import toastStyle from "../utils/toastStyle";
+import { buscarUsuario } from "../services/serviciosUsuarios";
 
 export const LoginContext = createContext();
 
 function LoginProvider({ children }) {
+  const [users, setUsers] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
-  const [registerUser, setRegisterUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const createUser = (user) => {
-    setRegisterUser({
-      id: new Date().getTime().toString(),
-      fullName: user.fullName,
-      age: user.age,
-      city: user.city,
-      phone: user.phone,
-      email: user.email,
-      password: user.password,
-    });
-    console.log(user);
-  };
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const data = await buscarUsuario();
+      setUsers(data);
+    };
+    fetchUsers();
+    console.log("hola");
+  }, [locationñ]);
 
-  const login = (loginData) => {
-    if (
-      registerUser &&
-      registerUser.email === loginData.email &&
-      registerUser.password === loginData.password
-    ) {
-      setIsLogin(true);
-      alert(`Bienvenido! ${registerUser.fullName}`);
-      navigate("/dashboard");
-      return true;
+  const login = async (loginData) => {
+    const matchUser = users.find(
+      (user) =>
+        user.correo === loginData.email &&
+        user.contraseña === loginData.password
+    );
+    if (!matchUser) {
+      toast.error("Error al iniciar sesión.", {
+        description: "El usuario o la contraseña es incorrecto",
+        position: "bottom-center",
+        richColors: true,
+        style: toastStyle,
+      });
+      return;
     }
-    alert("Contraseña o Correo incorrectos.");
-    return false;
+    new Promise((resolve) => {
+      const findUser = users.findIndex(
+        (user) =>
+          user.correo === loginData.email &&
+          user.contraseña === loginData.password
+      );
+
+      setIsLogin(true);
+      setCurrentUser(users[findUser]);
+      resolve();
+    });
+    navigate("/dashboard");
   };
 
   const logout = () => {
     setIsLogin(false);
+    setCurrentUser("");
   };
 
   return (
     <LoginContext.Provider
       value={{
         isLogin,
-        registerUser,
-        createUser,
+        currentUser,
         login,
         logout,
       }}
